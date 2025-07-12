@@ -13,3 +13,4 @@ Team Member : Prarit Arora
 - 🧠 AI-Powered Recommendations
 - 🛍 Wishlist & Notifications – Never miss an item you love
 - 👥 Community Feed – Share, like, and discuss with fellow swappers
+<img width="14912" height="28288" alt="Group 1171276141" src="https://github.com/user-attachments/assets/647e858e-d8b4-4bd8-b410-9d88084343db" />
