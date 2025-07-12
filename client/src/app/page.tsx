@@ -58,7 +58,7 @@ export default function HomePage() {
     <SessionProvider>
       <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-pink-50 to-purple-50">
         <Header />
-        
+
         {/* Hero Section with Background Gradient */}
         <main className="overflow-hidden">
           {/* Hero Section */}
@@ -71,7 +71,7 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, ease: "easeOut" }}
                 >
-                  <motion.h1 
+                  <motion.h1
                     className="text-5xl lg:text-7xl font-black mb-6"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -80,8 +80,8 @@ export default function HomePage() {
                     <span className="text-red-500">ReWea</span>
                     <span className="text-green-500">R</span>
                   </motion.h1>
-                  
-                  <motion.h2 
+
+                  <motion.h2
                     className="text-2xl lg:text-4xl font-bold text-black mb-4"
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -89,8 +89,8 @@ export default function HomePage() {
                   >
                     with flair
                   </motion.h2>
-                  
-                  <motion.h3 
+
+                  <motion.h3
                     className="text-xl lg:text-2xl font-semibold text-black mb-2"
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -98,8 +98,8 @@ export default function HomePage() {
                   >
                     Show your
                   </motion.h3>
-                  
-                  <motion.h3 
+
+                  <motion.h3
                     className="text-3xl lg:text-5xl font-black text-red-500 mb-8"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -107,8 +107,8 @@ export default function HomePage() {
                   >
                     CaRe
                   </motion.h3>
-                  
-                  <motion.p 
+
+                  <motion.p
                     className="text-lg text-black mb-8 italic font-medium"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -118,8 +118,8 @@ export default function HomePage() {
                     ReWear fashion that's fresh, fun,<br />
                     and future-ready.
                   </motion.p>
-                  
-                  <motion.div 
+
+                  <motion.div
                     className="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -129,32 +129,33 @@ export default function HomePage() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <Button 
-                        size="lg" 
+                      <Button
+                        size="lg"
                         className="bg-gradient-to-r from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white font-bold px-10 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-white"
                       >
                         Start SWAP
                       </Button>
                     </motion.div>
                   </motion.div>
-                  
-                  <motion.div 
+
+                  <motion.div
                     className="flex gap-4"
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.9 }}
                   >
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button 
-                        variant="outline" 
-                        className="font-semibold border-2 border-gray-800 text-gray-800 hover:bg-gray-800 hover:text-white px-6 py-2 rounded-xl transition-all duration-300"
+                      <Button
+                        className="bg-gradient-to-r from-pink-400 to-yellow-300 text-white 
+             font-semibold px-6 py-2 rounded-xl shadow-lg 
+             hover:from-pink-500 hover:to-yellow-400 transition-all duration-300"
                       >
                         Swap Now
                       </Button>
                     </motion.div>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button 
-                        variant="ghost" 
+                      <Button
+                        variant="ghost"
                         className="font-semibold text-gray-800 hover:bg-gray-800/20 px-6 py-2 rounded-xl transition-all duration-300 border border-gray-600"
                       >
                         Learn more
@@ -166,14 +167,14 @@ export default function HomePage() {
             </div>
 
             {/* Right Side - Fashion Image with Pink Background */}
-            <motion.div 
+            <motion.div
               className="hidden lg:block w-1/2 relative bg-gradient-to-br from-pink-200 to-pink-300 min-h-[90vh]"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
             >
               <div className="relative z-10 p-8 h-full flex items-center">
-                <motion.div 
+                <motion.div
                   className="bg-white/20 backdrop-blur-sm rounded-3xl p-8 w-full"
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
@@ -182,8 +183,8 @@ export default function HomePage() {
                     ULTIMATE FASHION<br />
                     <span className="text-2xl">DESTINATION</span>
                   </h2>
-                  
-                  <motion.div 
+
+                  <motion.div
                     className="relative w-full h-96 mb-6 rounded-2xl overflow-hidden bg-white/10"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
@@ -196,16 +197,16 @@ export default function HomePage() {
                       priority
                     />
                   </motion.div>
-                  
+
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-lg font-bold text-gray-800">2025 ⭐</span>
                     <span className="text-lg font-bold text-gray-800">NEW COLLECTION</span>
                   </div>
-                  
+
                   <div className="text-center">
-                    <motion.span 
+                    <motion.span
                       className="bg-gradient-to-r from-yellow-300 to-orange-300 text-black px-6 py-3 rounded-full font-bold text-sm inline-block shadow-lg"
-                      animate={{ 
+                      animate={{
                         boxShadow: [
                           "0 0 20px rgba(255, 193, 7, 0.3)",
                           "0 0 30px rgba(255, 193, 7, 0.6)",
@@ -227,10 +228,10 @@ export default function HomePage() {
             <motion.div
               className="whitespace-nowrap text-lg font-bold"
               animate={{ x: [1000, -1000] }}
-              transition={{ 
-                duration: 15, 
-                repeat: Infinity, 
-                ease: "linear" 
+              transition={{
+                duration: 15,
+                repeat: Infinity,
+                ease: "linear"
               }}
             >
               ⭐ NEW COLLECTION 2025 ⭐ TRENDING NOW ⭐ NEW COLLECTION 2025 ⭐ TRENDING NOW ⭐ NEW COLLECTION 2025 ⭐ TRENDING NOW ⭐
@@ -240,7 +241,7 @@ export default function HomePage() {
           {/* Category Selection */}
           <section className="py-16 px-6">
             <div className="max-w-6xl mx-auto">
-              <motion.h2 
+              <motion.h2
                 className="text-4xl font-bold text-center mb-12 text-gray-800"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -249,7 +250,7 @@ export default function HomePage() {
               >
                 Category Selection
               </motion.h2>
-              <motion.div 
+              <motion.div
                 className="grid md:grid-cols-3 gap-8"
                 variants={containerVariants}
                 initial="hidden"
@@ -266,7 +267,7 @@ export default function HomePage() {
                   >
                     <Card className={`${category.color} border-0 overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl rounded-3xl`}>
                       <CardContent className="p-8 text-center">
-                        <motion.div 
+                        <motion.div
                           className="w-40 h-40 mx-auto mb-6 relative"
                           whileHover={{ rotate: 10 }}
                           transition={{ duration: 0.3 }}
@@ -292,7 +293,7 @@ export default function HomePage() {
           {/* Product Listing with Carousel */}
           <section className="py-16 px-6 bg-gradient-to-r from-purple-100 via-pink-100 to-yellow-100">
             <div className="max-w-7xl mx-auto">
-              <motion.h2 
+              <motion.h2
                 className="text-4xl font-bold text-center mb-12 text-gray-800"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -301,7 +302,7 @@ export default function HomePage() {
               >
                 Product Listing
               </motion.h2>
-              
+
               {/* Carousel */}
               <div className="embla overflow-hidden" ref={emblaRef}>
                 <div className="embla__container flex">
@@ -314,7 +315,7 @@ export default function HomePage() {
                       >
                         <Card className={`${product.color} border-0 overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl rounded-3xl h-full`}>
                           <CardContent className="p-6 text-center">
-                            <motion.div 
+                            <motion.div
                               className="w-32 h-32 mx-auto mb-4 relative"
                               whileHover={{ rotate: 5 }}
                               transition={{ duration: 0.3 }}
@@ -342,7 +343,7 @@ export default function HomePage() {
           {/* About Us Section */}
           <section className="py-16 px-6">
             <div className="max-w-6xl mx-auto">
-              <motion.h2 
+              <motion.h2
                 className="text-4xl font-bold text-center mb-12 text-gray-800"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -351,9 +352,9 @@ export default function HomePage() {
               >
                 About Us
               </motion.h2>
-              
+
               {/* Our Story */}
-              <motion.div 
+              <motion.div
                 className="grid lg:grid-cols-2 gap-8 mb-12"
                 variants={containerVariants}
                 initial="hidden"
@@ -369,7 +370,7 @@ export default function HomePage() {
                       <p className="text-yellow-800 leading-relaxed mb-6">
                         Born from the frustration of overflowing wardrobes and underused outfits, ReWear started with a simple idea — what if your forgotten clothes could become someone else's new favorites? We envision fashion cleaner, accessible, and fun.
                       </p>
-                      <motion.div 
+                      <motion.div
                         className="flex justify-center"
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
@@ -391,7 +392,7 @@ export default function HomePage() {
                       <p className="text-pink-800 leading-relaxed mb-6">
                         ReWear is redefining fashion through community-driven clothing swaps. Look good, reduce waste, and make a positive impact—one outfit at a time.
                       </p>
-                      <motion.div 
+                      <motion.div
                         className="flex justify-center"
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
@@ -404,9 +405,9 @@ export default function HomePage() {
                   </Card>
                 </motion.div>
               </motion.div>
-              
+
               {/* Team */}
-              <motion.div 
+              <motion.div
                 className="text-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -416,7 +417,7 @@ export default function HomePage() {
                 <h3 className="text-3xl font-bold mb-8 text-gray-800">
                   Join the Movement
                 </h3>
-                <motion.div 
+                <motion.div
                   className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
                   variants={containerVariants}
                   initial="hidden"
@@ -424,8 +425,8 @@ export default function HomePage() {
                   viewport={{ once: true }}
                 >
                   {teamMembers.map((member, index) => (
-                    <motion.div 
-                      key={member.name} 
+                    <motion.div
+                      key={member.name}
                       className="text-center group"
                       variants={itemVariants}
                       whileHover={{ scale: 1.1, y: -5 }}
@@ -450,7 +451,7 @@ export default function HomePage() {
           {/* CTA Section */}
           <section className="py-16 px-6 bg-gradient-to-r from-cyan-100 to-blue-100">
             <div className="max-w-4xl mx-auto text-center">
-              <motion.h2 
+              <motion.h2
                 className="text-4xl font-bold mb-8 text-gray-800"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -459,7 +460,7 @@ export default function HomePage() {
               >
                 Ready to Start Your Fashion Journey?
               </motion.h2>
-              <motion.p 
+              <motion.p
                 className="text-xl text-gray-600 mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -468,7 +469,7 @@ export default function HomePage() {
               >
                 Join thousands of fashion enthusiasts in the sustainable style revolution
               </motion.p>
-              <motion.div 
+              <motion.div
                 className="flex flex-col sm:flex-row gap-4 justify-center"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -477,8 +478,8 @@ export default function HomePage() {
               >
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link href="/browse">
-                    <Button 
-                      size="lg" 
+                    <Button
+                      size="lg"
                       className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-10 py-4 text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-0 font-semibold"
                     >
                       Start Browsing
@@ -487,9 +488,9 @@ export default function HomePage() {
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Link href="/register">
-                    <Button 
-                      size="lg" 
-                      variant="outline" 
+                    <Button
+                      size="lg"
+                      variant="outline"
                       className="px-10 py-4 text-lg border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 font-semibold"
                     >
                       Join Community

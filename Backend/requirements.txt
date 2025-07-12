@@ -6,3 +6,9 @@ passlib[bcrypt]
 python-multipart
 pydantic
 email-validator
+openai
+textblob
+SpeechRecognition
+gTTS
+PyAudio
+python-dotenv
