@@ -57,7 +57,11 @@ def register_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
 @router.post("/login", response_model=schemas.Token)
 def login_for_access_token(db: Session = Depends(get_db), form_data: OAuth2PasswordRequestForm = Depends()):
-    user = crud.crud_user.get_user_by_username(db, username=form_data.username)
+    # Try to find user by email first, then by username
+    user = crud.crud_user.get_user_by_email(db, email=form_data.username)
+    if not user:
+        user = crud.crud_user.get_user_by_username(db, username=form_data.username)
+    
     if not user or not security.verify_password(form_data.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

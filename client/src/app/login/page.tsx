@@ -18,13 +18,84 @@ function LoginContent() {
   const { data: session } = useSession();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [heights, setHeights] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [isSignUp, setIsSignUp] = useState(false);
   
   useEffect(() => {
     setHeights(Array.from({ length: 12 }, () => Math.floor(Math.random() * 100)));
   },[]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+
+    console.log('Form submitted:', { isSignUp, email, username, password });
+
+    try {
+      if (isSignUp) {
+        // Register user
+        console.log('Attempting registration...');
+        const response = await fetch('http://localhost:8000/api/v1/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            username,
+            password,
+          }),
+        });
+
+        console.log('Registration response:', response.status);
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Registration successful:', data);
+          setIsSignUp(false);
+          setError('');
+          alert('Registration successful! Please sign in.');
+        } else {
+          const errorData = await response.json();
+          console.log('Registration error:', errorData);
+          setError(errorData.detail || 'Registration failed');
+        }
+      } else {
+        // Login user
+        console.log('Attempting login...');
+        const formData = new FormData();
+        formData.append('username', email);
+        formData.append('password', password);
+
+        const response = await fetch('http://localhost:8000/api/v1/auth/login', {
+          method: 'POST',
+          body: formData,
+        });
+
+        console.log('Login response:', response.status);
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Login successful:', data);
+          localStorage.setItem('access_token', data.access_token);
+          window.location.href = '/home';
+        } else {
+          const errorData = await response.json();
+          console.log('Login error:', errorData);
+          setError(errorData.detail || 'Invalid credentials');
+        }
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+      setError('Connection error. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   if (session) {
     // Redirect to dashboard or home if already logged in
@@ -45,12 +116,41 @@ function LoginContent() {
               </div>
               <span className="ml-3 text-2xl font-bold text-neutral-900">ReWear</span>
             </div>
-            <h2 className="text-3xl font-bold text-neutral-900 mb-2">Sign In</h2>
-            <p className="text-neutral-600">Welcome back! Please enter your details</p>
+            <h2 className="text-3xl font-bold text-neutral-900 mb-2">
+              {isSignUp ? 'Sign Up' : 'Sign In'}
+            </h2>
+            <p className="text-neutral-600">
+              {isSignUp ? 'Create your ReWear account' : 'Welcome back! Please enter your details'}
+            </p>
           </div>
 
           {/* Sign In Form */}
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm">
+                {error}
+              </div>
+            )}
+            
+            {/* Username Field (only for signup) */}
+            {isSignUp && (
+              <div>
+                <label htmlFor="username" className="block text-sm font-medium text-neutral-700 mb-2">
+                  Username
+                </label>
+                <input
+                  id="username"
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter your username"
+                  className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors placeholder-neutral-400 text-neutral-700"
+                  required
+                  disabled={isLoading}
+                />
+              </div>
+            )}
+            
             {/* Email Field */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
@@ -64,6 +164,7 @@ function LoginContent() {
                 placeholder="Enter your email"
                 className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors placeholder-neutral-400 text-neutral-700"
                 required
+                disabled={isLoading}
               />
             </div>
 
@@ -81,6 +182,7 @@ function LoginContent() {
                   placeholder="••••••••"
                   className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-colors placeholder-neutral-400 text-neutral-900"
                   required
+                  disabled={isLoading}
                 />
                 <button
                   type="button"
@@ -114,9 +216,10 @@ function LoginContent() {
             {/* Sign In Button */}
             <button
               type="submit"
-              className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+              disabled={isLoading}
+              className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
             >
-              Sign In
+              {isLoading ? (isSignUp ? 'Creating account...' : 'Signing in...') : (isSignUp ? 'Sign Up' : 'Sign In')}
             </button>
 
             {/* Divider */}
@@ -156,12 +259,22 @@ function LoginContent() {
               </button> */}
             </div>
 
-            {/* Sign Up Link */}
+            {/* Sign Up/In Link */}
             <p className="text-center text-sm text-neutral-600">
-              Don't have an account?{' '}
-              <a href="#" className="text-primary-600 hover:text-primary-700 font-medium">
-                Sign up
-              </a>
+              {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
+              <button
+                type="button"
+                onClick={() => {
+                  setIsSignUp(!isSignUp);
+                  setError('');
+                  setEmail('');
+                  setPassword('');
+                  setUsername('');
+                }}
+                className="text-primary-600 hover:text-primary-700 font-medium"
+              >
+                {isSignUp ? 'Sign in' : 'Sign up'}
+              </button>
             </p>
           </form>
         </div>
