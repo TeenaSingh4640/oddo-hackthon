@@ -4,7 +4,8 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { User } from 'lucide-react';
+import { User, LogOut } from 'lucide-react';
+import { logout } from '@/lib/auth';
 
 export default function Header() {
   const { data: session } = useSession();
@@ -21,6 +22,10 @@ export default function Header() {
       return pathname === '/' || pathname === '/home';
     }
     return pathname.startsWith(href);
+  };
+
+  const handleLogout = () => {
+    logout();
   };
 
   return (
@@ -83,17 +88,27 @@ export default function Header() {
                       alt={session.user?.name || 'User'}
                       width={32}
                       height={32}
-                      className="w-8 h-8 rounded-full border-2 border-primary-200"
+                      className="w-8 h-8 rounded-full border-2 border-primary-200 cursor-pointer"
                       onClick={()=> {window.location.href='/dashboard'}}
                     />
                   ) : (
-                    <div onClick={()=> {window.location.href='/dashboard'}} className="w-8 h-8 rounded-full border-2 border-primary-200 bg-primary-50 flex items-center justify-center">
+                    <div onClick={()=> {window.location.href='/dashboard'}} className="w-8 h-8 rounded-full border-2 border-primary-200 bg-primary-50 flex items-center justify-center cursor-pointer">
                       <User className="w-4 h-4 text-primary-600" />
                     </div>
                   )}
                   <span className="hidden sm:block text-sm font-medium text-neutral-700">
                     {session.user?.name || 'User'}
                   </span>
+                  
+                  {/* Logout Button */}
+                  <button
+                    onClick={handleLogout}
+                    className="flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium text-neutral-600 hover:text-red-600 hover:bg-red-50 transition-colors"
+                    title="Sign out"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span className="hidden sm:inline">Sign Out</span>
+                  </button>
                 </div>
               </div>
             ) : (
@@ -148,17 +163,28 @@ export default function Header() {
           ))}
           
           {session ? (
-            <Link
-              href="/dashboard"
-              className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium transition-colors ${
-                isActive('/dashboard')
-                  ? 'text-primary-600 bg-primary-50'
-                  : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
-              }`}
-            >
-              <span className="text-xl">📊</span>
-              <span>Dashboard</span>
-            </Link>
+            <>
+              <Link
+                href="/dashboard"
+                className={`flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium transition-colors ${
+                  isActive('/dashboard')
+                    ? 'text-primary-600 bg-primary-50'
+                    : 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-50'
+                }`}
+              >
+                <span className="text-xl">📊</span>
+                <span>Dashboard</span>
+              </Link>
+              
+              {/* Mobile Logout Button */}
+              <button
+                onClick={handleLogout}
+                className="flex items-center space-x-3 px-3 py-2 rounded-lg text-base font-medium text-neutral-600 hover:text-red-600 hover:bg-red-50 transition-colors w-full text-left"
+              >
+                <span className="text-xl">🚪</span>
+                <span>Sign Out</span>
+              </button>
+            </>
           ) : (
             <div className="pt-2 border-t border-neutral-200">
               <Link
