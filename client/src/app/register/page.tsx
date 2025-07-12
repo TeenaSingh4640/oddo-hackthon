@@ -129,12 +129,12 @@ export default function RegisterPage() {
                   <div className="space-y-6 animate-slide-up">
                     <div>
                       <h2 className="text-xl font-semibold text-neutral-900 mb-2">Tell us about yourself</h2>
-                      <p className="text-neutral-600 text-sm">Let&apos;s start with your basic information</p>
+                      <p className="text-neutral-700 text-sm">Let&apos;s start with your basic information</p>
                     </div>
                     
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-medium text-neutral-700 mb-2">
+                        <label className="block text-sm font-medium text-neutral-800 mb-2">
                           Username
                         </label>
                         <div className="relative">
@@ -151,7 +151,7 @@ export default function RegisterPage() {
                       </div>
                       
                       <div>
-                        <label className="block text-sm font-medium text-neutral-700 mb-2">
+                        <label className="block text-sm font-medium text-neutral-800 mb-2">
                           Email Address
                         </label>
                         <div className="relative">
@@ -175,11 +175,11 @@ export default function RegisterPage() {
                   <div className="space-y-6 animate-slide-up">
                     <div>
                       <h2 className="text-xl font-semibold text-neutral-900 mb-2">What&apos;s your size?</h2>
-                      <p className="text-neutral-600 text-sm">This helps us recommend the perfect items for you</p>
+                      <p className="text-neutral-700 text-sm">This helps us recommend the perfect items for you</p>
                     </div>
                     
                     <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-3">
+                      <label className="block text-sm font-medium text-neutral-800 mb-3">
                         Size Preference
                       </label>
                       <div className="grid grid-cols-3 gap-3">
@@ -208,7 +208,7 @@ export default function RegisterPage() {
                   <div className="space-y-6 animate-slide-up">
                     <div>
                       <h2 className="text-xl font-semibold text-neutral-900 mb-2">What are you looking for?</h2>
-                      <p className="text-neutral-600 text-sm">Select the categories you&apos;re most interested in</p>
+                      <p className="text-neutral-700 text-sm">Select the categories you&apos;re most interested in</p>
                     </div>
                     
                     <div className="space-y-3">
@@ -227,7 +227,7 @@ export default function RegisterPage() {
                             <span className="text-2xl">{category.icon}</span>
                             <div className="flex-1">
                               <div className="font-medium text-neutral-900">{category.label}</div>
-                              <div className="text-sm text-neutral-600">{category.description}</div>
+                              <div className="text-sm text-neutral-700">{category.description}</div>
                             </div>
                             <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
                               formData.categories.includes(category.value)
@@ -287,7 +287,7 @@ export default function RegisterPage() {
 
               {/* Login Link */}
               <div className="mt-6 text-center">
-                <p className="text-sm text-neutral-600">
+                <p className="text-sm text-neutral-700">
                   Already have an account?{' '}
                   <Link href="/login" className="text-primary-600 hover:text-primary-700 font-medium">
                     Sign in

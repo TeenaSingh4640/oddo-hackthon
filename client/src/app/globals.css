@@ -100,6 +100,42 @@ body {
   color: var(--foreground);
 }
 
+/* Global text color fix - make unstyled text darker by default */
+body {
+  color: #374151; /* text-gray-700 */
+}
+
+/* Ensure headings are darker */
+h1, h2, h3, h4, h5, h6 {
+  color: #111827; /* text-gray-900 */
+}
+
+/* Ensure form labels and important text are darker */
+label, .font-medium, .font-semibold, .font-bold {
+  color: #1f2937; /* text-gray-800 */
+}
+
+/* Override for elements that should have specific colors */
+.text-gray-400, .text-gray-500, .text-neutral-400, .text-neutral-500 {
+  color: inherit;
+}
+
+/* Ensure buttons have proper text contrast */
+button, .btn {
+  color: #374151; /* text-gray-700 - default dark text */
+}
+
+/* Dark background buttons should have light text */
+button.bg-black, button.bg-gray-900, button.bg-gray-800,
+.btn.bg-black, .btn.bg-gray-900, .btn.bg-gray-800 {
+  color: white !important;
+}
+
+/* Outline buttons should have dark text */
+button.border, button.border-2, .btn.border, .btn.border-2 {
+  color: #374151; /* text-gray-700 */
+}
+
 /* Custom Animations */
 @keyframes fadeInUp {
   from {

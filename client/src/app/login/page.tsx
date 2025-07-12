@@ -99,7 +99,7 @@ function LoginContent() {
 
   if (session) {
     // Redirect to dashboard or home if already logged in
-    window.location.href = '/home';
+    window.location.href = '/';
     return null;
   }
 
@@ -119,7 +119,7 @@ function LoginContent() {
             <h2 className="text-3xl font-bold text-neutral-900 mb-2">
               {isSignUp ? 'Sign Up' : 'Sign In'}
             </h2>
-            <p className="text-neutral-600">
+            <p className="text-neutral-700">
               {isSignUp ? 'Create your ReWear account' : 'Welcome back! Please enter your details'}
             </p>
           </div>
@@ -135,7 +135,7 @@ function LoginContent() {
             {/* Username Field (only for signup) */}
             {isSignUp && (
               <div>
-                <label htmlFor="username" className="block text-sm font-medium text-neutral-700 mb-2">
+                <label htmlFor="username" className="block text-sm font-medium text-neutral-800 mb-2">
                   Username
                 </label>
                 <input
@@ -153,7 +153,7 @@ function LoginContent() {
             
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-neutral-800 mb-2">
                 Email
               </label>
               <input
@@ -170,7 +170,7 @@ function LoginContent() {
 
             {/* Password Field */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-neutral-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-neutral-800 mb-2">
                 Password
               </label>
               <div className="relative">
@@ -206,7 +206,7 @@ function LoginContent() {
                   onChange={(e) => setRememberMe(e.target.checked)}
                   className="w-4 h-4 text-primary-600 border-neutral-300 rounded focus:ring-primary-500"
                 />
-                <span className="ml-2 text-sm text-neutral-600">Remember for 30 Days</span>
+                <span className="ml-2 text-sm text-neutral-700">Remember for 30 Days</span>
               </label>
               <a href="#" className="text-sm text-primary-600 hover:text-primary-700 font-medium">
                 Forgot password?
@@ -260,7 +260,7 @@ function LoginContent() {
             </div>
 
             {/* Sign Up/In Link */}
-            <p className="text-center text-sm text-neutral-600">
+            <p className="text-center text-sm text-neutral-700">
               {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
               <button
                 type="button"
@@ -281,8 +281,18 @@ function LoginContent() {
       </div>
 
       {/* Right Column - Welcome Message & Dashboard Preview */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-500 to-accent-600 items-center justify-center p-12">
-        <div className="max-w-md text-center text-white">
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-500 to-accent-600 items-center justify-center p-12 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/login-page-side.png" 
+            alt="ReWear Login Background" 
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-500/80 to-accent-600/80"></div>
+        </div>
+        
+        <div className="max-w-md text-center text-white relative z-10">
           <h1 className="text-4xl font-bold mb-4">Welcome back!</h1>
           <h2 className="text-xl mb-6">Please sign in to your ReWear account</h2>
           <p className="text-primary-100 mb-8">

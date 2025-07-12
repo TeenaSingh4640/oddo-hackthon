@@ -45,3 +45,68 @@ def read_item(item_id: int, db: Session = Depends(get_db)):
     if db_item is None:
         raise HTTPException(status_code=404, detail="Item not found")
     return db_item
+
+@router.post("/seed", summary="Seed sample data")
+def seed_items(db: Session = Depends(get_db)):
+    """
+    Create sample items for testing.
+    - This endpoint creates sample data for demonstration purposes.
+    """
+    sample_items = [
+        {
+            "title": "Vintage Denim Jacket",
+            "description": "Classic blue denim jacket in excellent condition",
+            "category": "Clothes",
+            "size": "M",
+            "condition": "Good",
+            "owner_id": 1
+        },
+        {
+            "title": "Leather Sneakers",
+            "description": "Comfortable white leather sneakers",
+            "category": "Footwear",
+            "size": "42",
+            "condition": "Like New",
+            "owner_id": 1
+        },
+        {
+            "title": "Silver Necklace",
+            "description": "Elegant silver necklace with pendant",
+            "category": "Accessories",
+            "size": "One Size",
+            "condition": "New",
+            "owner_id": 1
+        },
+        {
+            "title": "Cotton T-Shirt",
+            "description": "Soft cotton t-shirt in navy blue",
+            "category": "Clothes",
+            "size": "L",
+            "condition": "Good",
+            "owner_id": 1
+        },
+        {
+            "title": "Running Shoes",
+            "description": "Lightweight running shoes for daily use",
+            "category": "Footwear",
+            "size": "41",
+            "condition": "Fair",
+            "owner_id": 1
+        },
+        {
+            "title": "Wrist Watch",
+            "description": "Classic analog wrist watch",
+            "category": "Accessories",
+            "size": "One Size",
+            "condition": "Like New",
+            "owner_id": 1
+        }
+    ]
+    
+    created_items = []
+    for item_data in sample_items:
+        item = schemas.ItemCreate(**item_data)
+        created_item = crud_item.create_user_item(db=db, item=item, user_id=item_data["owner_id"])
+        created_items.append(created_item)
+    
+    return {"message": f"Created {len(created_items)} sample items", "items": created_items}
